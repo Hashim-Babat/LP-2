@@ -1,6 +1,7 @@
+#include <bits/stdc++.h>
 #include <iostream>
-#include <vector>
-#include <queue>
+// #include <vector>
+// #include <queue>
 using namespace std;
 
 // Graph class
@@ -39,7 +40,7 @@ public:
     // Method to perform DFS traversal starting from a given vertex
     void DFS_traversal(int start) {
         vector<bool> visited(V, false);  // Initialize the visited array
-        cout << "DFS Traversal starting from vertex " << start << ": ";
+        cout << "DFS Traversal starting from vertex " << start << " : ";
         DFS(start, visited);
         cout << endl;
     }
@@ -70,7 +71,7 @@ public:
         visited[start] = true;
         q.push(start);
 
-        cout << "Recursive BFS Traversal starting from vertex " << start << ": ";
+        cout << "Recursive BFS Traversal starting from vertex " << start << " : ";
         // Call the helper function to simulate BFS
         recursiveBFSHelper(visited, q);
         cout << endl;
