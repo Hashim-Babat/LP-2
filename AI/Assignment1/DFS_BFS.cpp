@@ -78,29 +78,46 @@ public:
 
 };
 
-// Main function to demonstrate graph traversal
 int main() {
-    // Create a graph with 5 vertices (0 to 6)
-    Graph g(7);
+    int V;
+    cout << "Enter number of vertices: ";
+    cin >> V;
 
-    // Add edges to the graph (undirected)
-    g.addEdge(0,1);
-    g.addEdge(0,2);
-    g.addEdge(1,2);
-    g.addEdge(1,3);
-    g.addEdge(2,5);
-    g.addEdge(3,4);
-    g.addEdge(3,6);
-    g.addEdge(4,5);
-    g.addEdge(5,6);
+    if (V <= 0) {
+        cerr << "Number of vertices must be positive.\n";
+        return 1;
+    }
 
+    Graph g(V);
 
+    cout << "Enter edges (u v) one per line. Use -1 -1 to stop:\n";
+    while (true) {
+        int u, v;
+        cin >> u >> v;
 
-    // Perform DFS traversal starting from vertex 0
-    g.DFS_traversal(0);
+        if (u == -1 && v == -1) {
+            break;
+        }
 
-    // Perform BFS traversal starting from vertex 0
-    g.BFS(0);
+        // Validate and add edge
+        if (u >= 0 && u < V && v >= 0 && v < V) {
+            g.addEdge(u, v);
+        } else {
+            cout << "Invalid edge (" << u << ", " << v << "), skipped.\n";
+        }
+    }
+
+    int start;
+    cout << "Enter starting vertex for traversals: ";
+    cin >> start;
+
+    if (start < 0 || start >= V) {
+        cerr << "Invalid start vertex.\n";
+        return 1;
+    }
+
+    g.DFS_traversal(start);
+    g.BFS(start);
 
     return 0;
 }
