@@ -70,6 +70,46 @@ class Graph
         }
         cout<<"\nMinimum Cost : "<<minCost<<endl;
     }
+    void primsMinCost(vector<vector<int>>& adjacencyMatrix, vector<string>& cities) {
+        int V = adjacencyMatrix.size();
+        vector<bool> visited(V, false);
+        vector<int> key(V, 9999);  // Stores minimum weight to reach a node
+        vector<int> parent(V, -1); // Stores parent node in MST
+    
+        key[0] = 0; // Start from the first vertex
+    
+        for (int count = 0; count < V - 1; count++) {
+            int min = 9999, u = -1;
+    
+            // Find the vertex with the minimum key value from the unvisited set
+            for (int i = 0; i < V; i++) {
+                if (!visited[i] && key[i] < min) {
+                    min = key[i];
+                    u = i;
+                }
+            }
+    
+            visited[u] = true;
+    
+            // Update key values of adjacent vertices
+            for (int v = 0; v < V; v++) {
+                if (adjacencyMatrix[u][v] && !visited[v] && adjacencyMatrix[u][v] < key[v]) {
+                    key[v] = adjacencyMatrix[u][v];
+                    parent[v] = u;
+                }
+            }
+        }
+    
+        // Print MST
+        int minCost = 0;
+        cout << "\nPrim's MST Edges:\n";
+        for (int i = 1; i < V; i++) {
+            cout << cities[parent[i]] << " -> " << cities[i] << " : " << adjacencyMatrix[parent[i]][i] << endl;
+            minCost += adjacencyMatrix[parent[i]][i];
+        }
+        cout << "\nMinimum Cost : " << minCost << endl;
+    }
+    
 };
 int main() {
 	cout<<"\nEnter total no of cities : ";
@@ -105,6 +145,9 @@ int main() {
 		}
 		else cout<<"\nInavlid number !";
 	}
+    vector<vector<int>> adjMatrixCopy = adjMatrix; // for Kruskal
+    vector<vector<int>> adjMatrixCopy2 = adjMatrix; // for Prim
 	g.print(adjMatrix);
-	g.kruskalMinCost(adjMatrix,cities);
+	g.kruskalMinCost(adjMatrixCopy,cities);
+    g.primsMinCost(adjMatrixCopy2,cities);
 }
