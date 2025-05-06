@@ -33,12 +33,12 @@ bool solveNQueensBT(vector<vector<int>>& board, int col, int N) {
     if (col >= N)
         return true;
 
-    for (int i = 0; i < N; i++) {
-        if (isSafeBT(board, i, col, N)) {
-            board[i][col] = 1;
+    for (int row = 0; row < N; row++) {
+        if (isSafeBT(board, row, col, N)) {
+            board[row][col] = 1;
             if (solveNQueensBT(board, col + 1, N))
                 return true;
-            board[i][col] = 0; // backtrack
+            board[row][col] = 0; // backtrack
         }
     }
     return false;

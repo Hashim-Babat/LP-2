@@ -37,46 +37,46 @@ def main():
     # -----------------------------------------
     if fasting_sugar >= 126 and post_meal_sugar >= 200:
         diabetes_risk = True
-        print("🩺 Diagnosis: You are likely diabetic.")
+        print(" Diagnosis: You are likely diabetic.")
         if history_diabetes == 'yes':
-            print("➡️  Note: Previous history of diabetes detected. Blood sugar levels are dangerously high.")
+            print("  Note: Previous history of diabetes detected. Blood sugar levels are dangerously high.")
         else:
-            print("➡️  Warning: Blood sugar values indicate diabetes without known history.")
-        print("📝 Suggestion: Consult a diabetologist. Start sugar control medications and monitor diet.\n")
+            print(" Warning: Blood sugar values indicate diabetes without known history.")
+        print(" Suggestion: Consult a diabetologist. Start sugar control medications and monitor diet.\n")
 
     elif 100 <= fasting_sugar < 126 or 140 <= post_meal_sugar < 200:
         diabetes_risk = True
-        print("🩺 Diagnosis: You are in a pre-diabetic stage.")
-        print("📝 Suggestion: Exercise, maintain diet, monitor levels monthly. Reverse possible with care.\n")
+        print(" Diagnosis: You are in a pre-diabetic stage.")
+        print(" Suggestion: Exercise, maintain diet, monitor levels monthly. Reverse possible with care.\n")
 
     elif (frequent_thirst == 'yes' or frequent_urination == 'yes' or 
           blurred_vision == 'yes' or fatigue == 'yes') and (fasting_sugar > 110 or post_meal_sugar > 160):
         diabetes_risk = True
-        print("🩺 Diagnosis: Symptoms and borderline sugar levels suggest early diabetes.")
-        print("📝 Suggestion: Take HbA1c test. Meet a physician for preemptive treatment.\n")
+        print(" Diagnosis: Symptoms and borderline sugar levels suggest early diabetes.")
+        print(" Suggestion: Take HbA1c test. Meet a physician for preemptive treatment.\n")
 
     else:
-        print("✅ Blood sugar levels are within safe range.\n")
+        print("Blood sugar levels are within safe range.\n")
 
     # -----------------------------------------
     # Hypertension Evaluation
     # -----------------------------------------
     if systolic_bp >= 140 or diastolic_bp >= 90:
         hypertension_risk = True
-        print("🩺 Diagnosis: You have Hypertension (High Blood Pressure).")
+        print(" Diagnosis: You have Hypertension (High Blood Pressure).")
         if chest_pain == 'yes':
-            print("⚠️  Chest pain reported. Immediate attention recommended.")
+            print(" Chest pain reported. Immediate attention recommended.")
         if headache == 'yes':
-            print("⚠️  Frequent headaches may indicate vascular stress.")
-        print("📝 Suggestion: Reduce salt intake, check BP regularly, consult cardiologist.\n")
+            print(" Frequent headaches may indicate vascular stress.")
+        print(" Suggestion: Reduce salt intake, check BP regularly, consult cardiologist.\n")
 
     elif 120 <= systolic_bp < 140 or 80 <= diastolic_bp < 90:
         hypertension_risk = True
-        print("🩺 Diagnosis: Pre-hypertension detected.")
-        print("📝 Suggestion: Lifestyle management needed. Monitor regularly to prevent progression.\n")
+        print(" Diagnosis: Pre-hypertension detected.")
+        print(" Suggestion: Lifestyle management needed. Monitor regularly to prevent progression.\n")
 
     else:
-        print("✅ Blood pressure is within normal range.\n")
+        print(" Blood pressure is within normal range.\n")
 
     # -----------------------------------------
     # General Symptom Checks (with no risk detected above)
@@ -85,23 +85,23 @@ def main():
         if (frequent_thirst == 'yes' or frequent_urination == 'yes' or 
             blurred_vision == 'yes' or fatigue == 'yes'):
             mild_warning = True
-            print("⚠️  Warning: Some symptoms detected even though medical levels are normal.")
-            print("📝 Suggestion: Repeat tests in 2 weeks. Avoid sugar/starch. Track your symptoms.\n")
+            print("  Warning: Some symptoms detected even though medical levels are normal.")
+            print(" Suggestion: Repeat tests in 2 weeks. Avoid sugar/starch. Track your symptoms.\n")
 
         if chest_pain == 'yes' or headache == 'yes':
             mild_warning = True
-            print("⚠️  Chest pain/headache detected without high BP.")
-            print("📝 Suggestion: Could be stress-related. Consider ECG or physician consultation.\n")
+            print("  Chest pain/headache detected without high BP.")
+            print(" Suggestion: Could be stress-related. Consider ECG or physician consultation.\n")
 
     # -----------------------------------------
     # Final Summary
     # -----------------------------------------
     if not diabetes_risk and not hypertension_risk and not mild_warning:
-        print("✅ You are in good health based on all provided data.")
+        print(" You are in good health based on all provided data.")
         if age > 45:
-            print("🔄 Recommendation: Periodic checkups are still advised due to age group.\n")
+            print(" Recommendation: Periodic checkups are still advised due to age group.\n")
         else:
-            print("🔄 Keep exercising and eating healthy!\n")
+            print(" Keep exercising and eating healthy!\n")
 
     print("======= END OF REPORT =======")
 
